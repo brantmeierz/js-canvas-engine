@@ -1,6 +1,6 @@
 var mouse = {
-		x: false,
-		y: false,
+		x: 0,
+		y: 0,
 		left: false,
 		mid: false,
 		right: false
@@ -16,7 +16,7 @@ window.onload = function() {
 	}
 
 	canvas.onmousedown = function mouseDown(event) {
-		switch(event.button) {
+		switch (event.button) {
 			case 0:
 				mouse.left = true;
 				break;
@@ -29,8 +29,8 @@ window.onload = function() {
 		}
 	}
 
-	document.body.onmouseup = function mouseUp(event) {
-		switch(event.button) {
+	canvas.onmouseup = function mouseUp(event) {
+		switch (event.button) {
 			case 0:
 				mouse.left = false;
 				break;
@@ -42,6 +42,58 @@ window.onload = function() {
 				break;
 		}
 	}
+
+	canvas.onmouseenter = function mouseEnter(event) {
+		switch (event.buttons) {
+			case 0:
+				mouse.left = false;
+				mouse.mid = false;
+				mouse.right = false;
+				break;
+			case 1:
+				mouse.left = true;
+				mouse.mid = false;
+				mouse.right = false;
+				break;
+			case 2:
+				mouse.left = false;
+				mouse.mid = false;
+				mouse.right = true;
+				break;
+			case 3:
+				mouse.left = true;
+				mouse.mid = false;
+				mouse.right = true;
+				break;
+			case 4:
+				mouse.left = false;
+				mouse.mid = true;
+				mouse.right = false;
+				break;
+			case 5:
+				mouse.left = true;
+				mouse.mid = true;
+				mouse.right = false;
+				break;
+			case 6:
+				mouse.left = false;
+				mouse.mid = true;
+				mouse.right = true;
+				break;
+			case 7:
+				mouse.left = true;
+				mouse.mid = true;
+				mouse.right = true;
+				break;
+		}
+	}
+
+	canvas.onmouseout = function mouseOut(event) {
+		mouse.left = false;
+		mouse.mid = false;
+		mouse.right = false;
+	}
+
 }
 
 var keyDown = {
@@ -65,45 +117,45 @@ var keyDown = {
 	printscreen: false,
 	insert: false,
 	delete: false,
-	zero: false, 
+	zero: false,
 	one: false,
-	two: false, 
+	two: false,
 	three: false,
-	four: false, 
+	four: false,
 	five: false,
-	six: false, 
+	six: false,
 	seven: false,
-	eight: false, 
+	eight: false,
 	nine: false,
 	lessthan: false,
 	greaterthan: false,
-	a: false, 
-	b: false, 
+	a: false,
+	b: false,
 	c: false,
-	d: false, 
-	e: false, 
+	d: false,
+	e: false,
 	f: false,
-	g: false, 
-	h: false, 
+	g: false,
+	h: false,
 	i: false,
-	j: false, 
-	k: false, 
+	j: false,
+	k: false,
 	l: false,
-	m: false, 
-	n: false, 
+	m: false,
+	n: false,
 	o: false,
-	p: false, 
-	q: false, 
+	p: false,
+	q: false,
 	r: false,
-	s: false, 
-	t: false, 
+	s: false,
+	t: false,
 	u: false,
-	v: false, 
-	w: false, 
+	v: false,
+	w: false,
 	x: false,
-	y: false, 
+	y: false,
 	z: false,
-	lwindows: false, 
+	lwindows: false,
 	rwindows: false,
 	select: false,
 	num0: false,
@@ -170,45 +222,45 @@ var key = {
 	printscreen: 44,
 	insert: 45,
 	delete: 46,
-	zero: 48, 
+	zero: 48,
 	one: 49,
-	two: 50, 
+	two: 50,
 	three: 51,
-	four: 52, 
+	four: 52,
 	five: 53,
-	six: 54, 
+	six: 54,
 	seven: 55,
-	eight: 56, 
+	eight: 56,
 	nine: 57,
 	lessthan: 60,
 	greaterthan: 62,
-	a: 65, 
-	b: 66, 
+	a: 65,
+	b: 66,
 	c: 67,
-	d: 68, 
-	e: 69, 
+	d: 68,
+	e: 69,
 	f: 70,
-	g: 71, 
-	h: 72, 
+	g: 71,
+	h: 72,
 	i: 73,
-	j: 74, 
-	k: 75, 
+	j: 74,
+	k: 75,
 	l: 76,
-	m: 77, 
-	n: 78, 
+	m: 77,
+	n: 78,
 	o: 79,
-	p: 80, 
-	q: 81, 
+	p: 80,
+	q: 81,
 	r: 82,
-	s: 83, 
-	t: 84, 
+	s: 83,
+	t: 84,
 	u: 85,
-	v: 86, 
-	w: 87, 
+	v: 86,
+	w: 87,
 	x: 88,
-	y: 89, 
+	y: 89,
 	z: 90,
-	lwindows: 91, 
+	lwindows: 91,
 	rwindows: 92,
 	select: 93,
 	num0: 96,
@@ -255,14 +307,27 @@ var key = {
 }
 
 window.onkeyup = function(e) {
-	switch (e.getKeyCode()) {
-
+	for (var keys in key) {
+		if (key.hasOwnProperty(keys)) {
+			if (e.keyCode == key[keys]) {
+				keyDown[keys] = false;
+				break;
+			}
+		}
 	}
 }
 
 window.onkeydown = function(e) {
-	switch (e.getKeyCode()) {
-		
+	for (var keys in key) {
+		if (key.hasOwnProperty(keys)) {
+			if (e.keyCode == key[keys]) {
+				keyDown[keys] = true;
+				if (typeof(keyPressed) == "function") {
+					keyPressed(e.keyCode);
+				}
+				break;
+			}
+		}
 	}
 }
 
@@ -281,10 +346,10 @@ function windowSetup() {
 	canvasWidth = canvas.width;
 	canvasHeight = canvas.height;
 	ctx = canvas.getContext("2d");
-	if (typeof(init) == 'function') {
+	if (typeof(init) == "function") {
 		init();
 	}
-	if (typeof(main) == 'function') {
+	if (typeof(main) == "function") {
 		setInterval(main, 1);
 	}
 }
