@@ -1,12 +1,12 @@
 var x = 0;
 var y = 0;
-var w = 150;
-var h = 100;
+var w = 30;
+var h = 30;
 var state = 0;
 
-function init() {
+//function init() {
 	
-}
+//}
 
 function main() {
 	background(50, 50, 50);

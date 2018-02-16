@@ -16,50 +16,140 @@ window.onload = function() {
 	}
 
 	canvas.onmousedown = function mouseDown(event) {
-		mousePressed = true;
+		switch(event.button) {
+			case 0:
+				mouse.left = true;
+				break;
+			case 1:
+				mouse.mid = true;
+				break;
+			case 2:
+				mouse.right = true;
+				break;
+		}
 	}
 
 	document.body.onmouseup = function mouseUp(event) {
-		mousePressed = false;
+		switch(event.button) {
+			case 0:
+				mouse.left = false;
+				break;
+			case 1:
+				mouse.mid = false;
+				break;
+			case 2:
+				mouse.right = false;
+				break;
+		}
 	}
 }
 
-var key = {
-	a: false, b: false, c: false,
-	d: false, e: false, f: false,
-	g: false, h: false, i: false,
-	j: false, k: false, l: false,
-	m: false, n: false, o: false,
-	p: false, q: false, r: false,
-	s: false, t: false, u: false,
-	v: false, w: false, x: false,
-	y: false, z: false,
-	zero: false, one: false,
-	two: false, three: false,
-	four: false, five: false,
-	six: false, seven: false,
-	eight: false, nine: false,
-	lshift: false, rshift: false,
-	ctrl: false,
-	lalt: false, ralt: false,
+var keyDown = {
+	backspace: false,
 	tab: false,
 	enter: false,
-	backspace: false,
+	shift: false,
+	ctrl: false,
+	alt: false,
+	pausebreak: false,
+	capslock: false,
 	escape: false,
-	comma: false,
-	period: false,
+	pageup: false,
+	pagedown: false,
+	end: false,
+	home: false,
+	left: false,
+	up: false,
+	right: false,
+	down: false,
+	printscreen: false,
+	insert: false,
+	delete: false,
+	zero: false, 
+	one: false,
+	two: false, 
+	three: false,
+	four: false, 
+	five: false,
+	six: false, 
+	seven: false,
+	eight: false, 
+	nine: false,
+	lessthan: false,
+	greaterthan: false,
+	a: false, 
+	b: false, 
+	c: false,
+	d: false, 
+	e: false, 
+	f: false,
+	g: false, 
+	h: false, 
+	i: false,
+	j: false, 
+	k: false, 
+	l: false,
+	m: false, 
+	n: false, 
+	o: false,
+	p: false, 
+	q: false, 
+	r: false,
+	s: false, 
+	t: false, 
+	u: false,
+	v: false, 
+	w: false, 
+	x: false,
+	y: false, 
+	z: false,
+	lwindows: false, 
+	rwindows: false,
+	select: false,
+	num0: false,
+	num1: false,
+	num2: false,
+	num3: false,
+	num4: false,
+	num5: false,
+	num6: false,
+	num7: false,
+	num8: false,
+	num9: false,
+	multiply: false,
+	add: false,
+	subtract: false,
+	decimal: false,
+	divide: false,
+	f1: false,
+	f2: false,
+	f3: false,
+	f4: false,
+	f5: false,
+	f6: false,
+	f7: false,
+	f8: false,
+	f9: false,
+	f10: false,
+	f11: false,
+	f12: false,
+	numlock: false,
+	scrolllock: false,
+	pageforward: false,
 	semicolon: false,
-	quote: false,
-	hyphen: false,
 	equals: false,
-	lbracket: false,
-	rbracket: false,
-	backslash: false,
+	comma: false,
+	hypen: false,
+	period: false,
 	forwardslash: false,
-	grave: false
+	graveaccent: false,
+	lbracket: false,
+	backslash: false,
+	rbracket: false,
+	quote: false
 };
 
-var keycode = {
+var key = {
 	backspace: 8,
 	tab: 9,
 	enter: 13,
@@ -77,6 +167,7 @@ var keycode = {
 	up: 38,
 	right: 39,
 	down: 40,
+	printscreen: 44,
 	insert: 45,
 	delete: 46,
 	zero: 48, 
@@ -89,6 +180,8 @@ var keycode = {
 	seven: 55,
 	eight: 56, 
 	nine: 57,
+	lessthan: 60,
+	greaterthan: 62,
 	a: 65, 
 	b: 66, 
 	c: 67,
@@ -147,18 +240,18 @@ var keycode = {
 	f12: 123,
 	numlock: 144,
 	scrolllock: 145,
+	pageforward: 167,
 	semicolon: 186,
 	equals: 187,
 	comma: 188,
-	period: 0,
-	quote: 0,
-	hyphen: 0,
-	equals: 0,
-	lbracket: 0,
-	rbracket: 0,
-	backslash: 0,
-	forwardslash: 0,
-	grave: 0,
+	hypen: 189,
+	period: 190,
+	forwardslash: 191,
+	graveaccent: 192,
+	lbracket: 219,
+	backslash: 220,
+	rbracket: 221,
+	quote: 222
 }
 
 window.onkeyup = function(e) {
@@ -177,11 +270,23 @@ var canvas, canvasWidth, canvasHeight, ctx;
 
 function windowSetup() {
 	canvas = document.getElementById("gamecanvas");
+	if (canvas == null) {
+		canvas = document.getElementsByTagName("canvas")[0];
+		if (canvas == null) {
+			console.log("[!] You do not have a canvas element on your page!");
+			return;
+		}
+	}
+	canvas.innerHTML = "Your browser does not support the HTML canvas element.";
 	canvasWidth = canvas.width;
 	canvasHeight = canvas.height;
 	ctx = canvas.getContext("2d");
-	init();
-	setInterval(main, 50);
+	if (typeof(init) == 'function') {
+		init();
+	}
+	if (typeof(main) == 'function') {
+		setInterval(main, 1);
+	}
 }
 
 function background(r, g, b) {
