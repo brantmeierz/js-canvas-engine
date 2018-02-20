@@ -12,20 +12,24 @@ Optional, may be defined in user code and will be triggered at different points
 
 ## Reference objects
 
-| mouse object | Usage |
+| `mouse` object | Usage |
 | --- | --- |
 | `x` | Contains the x position of the mouse on the canvas (increasing left to right). |
 | `y` | Contains the y position of the mouse on the canvas (increasing top to bottom). |
-| `left` | True if the mouse's left button is pressed, false if it is not. |
-| `mid` | True if the mouse's middle button is pressed, false if it is not. |
-| `right` | True if the mouse's right button is pressed, false if it is not. |
+| `left` | `true` if the mouse's left button is pressed, `false` if it is not. |
+| `mid` | `true` if the mouse's middle button is pressed, `false` if it is not. |
+| `right` | `true` if the mouse's right button is pressed, `false` if it is not. |
 
-| key object | Usage |
+| `key` object | Usage |
 | --- | --- |
 | `a`-`z` | Contains the keycodes of alphabet characters. |
 | `zero`-`nine` | Contains the keycodes of number keys. |
 | `num0`-`num9` | Contains the keycodes of numpad keys. |
 | | |
+
+| `keyDown` object | Usage |
+| --- | --- |
+| Identical property names to those of the `key` object | `true` if the indicated key is pressed, `false` otherwise. |
 
 ## Library functions
 
