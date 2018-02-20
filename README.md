@@ -1,28 +1,33 @@
 # js-canvas-engine
 
 
-## Structural methods
+## Structural functions
 Optional, may be defined in user code and will be triggered at different points
 
-### function keyPressed(k) { }
-- Fired initially then sustained as a key is held. k contains the keycode of the key pressed and can be compared against the key object.
+| Structural function | Usage | 
+| --- | --- |
+| `function keyPressed(k) { }` | Fired initially then sustained as a key is held. k contains the keycode of the key pressed and can be compared against the key object. |
+| `function init() { }` | Run once when the page loads. |
+| `function main() { }` | Run continually as the page runs. |
 
-### function init() { }
-- Run once when the page loads
+## Reference objects
 
-### function main() { }
-- Run continually as the page runs
+| mouse object | Usage |
+| --- | --- |
+| `x` | Contains the x position of the mouse on the canvas (increasing left to right). |
+| `y` | Contains the y position of the mouse on the canvas (increasing top to bottom). |
+| `left` | True if the mouse's left button is pressed, false if it is not. |
+| `mid` | True if the mouse's middle button is pressed, false if it is not. |
+| `right` | True if the mouse's right button is pressed, false if it is not. |
 
-## Reference objects:
+| key object | Usage |
+| --- | --- |
+| `a`-`z` | Contains the keycodes of alphabet characters. |
+| `zero`-`nine` | Contains the keycodes of number keys. |
+| `num0`-`num9` | Contains the keycodes of numpad keys. |
+| | |
 
-### mouse
-- x
-- y
-- left
-- mid
-- right
-### key
-- 
+## Library functions
 
 | Library function | Usage |
 | ----------- | --- |
