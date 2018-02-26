@@ -6,8 +6,9 @@ var mouse = {
 		right: false
 };
 
-var mousePressed = false;
-
+/*
+	Window anchoring and mouse handling
+*/
 window.onload = function() {
 	windowSetup();
 	canvas.onmousemove = function updateMouse(event) {
@@ -96,10 +97,9 @@ window.onload = function() {
 
 }
 
-var keyDown = {
-
-};
-
+/*
+	Key handling
+*/
 var key = {
 	backspace: 8,
 	tab: 9,
@@ -205,6 +205,8 @@ var key = {
 	quote: 222
 }
 
+var keyDown = { };
+
 window.onkeyup = function(e) {
 	for (var keys in key) {
 		if (key.hasOwnProperty(keys)) {
@@ -230,6 +232,9 @@ window.onkeydown = function(e) {
 	}
 }
 
+/*
+	Canvas setup and structure
+*/
 var canvas, canvasWidth, canvasHeight, ctx;
 
 function windowSetup() {
@@ -259,6 +264,9 @@ function windowSetup() {
 	}
 }
 
+/*
+	Graphics and canvas manipulation functions
+*/
 function background(r, g, b) {
 	var pFill = ctx.fillStyle;
 	fstyle(r, g, b);

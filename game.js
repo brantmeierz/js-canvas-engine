@@ -8,9 +8,9 @@ var state = 0;
 
 //}
 
-function keyPressed() {
+//function keyPressed() {
 
-}
+//}
 
 function main() {
 	if (keyDown.up) {
