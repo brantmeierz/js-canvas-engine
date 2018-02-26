@@ -9,7 +9,7 @@ var state = 0;
 //}
 
 function keyPressed() {
-	
+
 }
 
 function main() {
@@ -76,29 +76,4 @@ function main() {
 		}
 	}
 	frect(x, y, w, h);
-}
-
-var m = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]];
-
-function fun(m, s) {
-	for (var i = 0; i < s.length; i++) {
-		var r = parseInt(s.charAt(i));
-		var c = parseInt(s.charAt(i - 1));
-		m[r][c]++;
-	}
-}
-
-function runCode() {
-	for (var i = 0; i < 10; i++) {
-		for (var j = 0; j < 10; j++) {
-			m[i][j] = 0;
-		}
-	}
-	var s = "20012002";
-	fun(m, s);
-	var sum = 0;
-	for (var k = 0; k < 10; k++) {
-		sum += m[k][k];
-	}
-	console.log(sum);
 }
