@@ -4,11 +4,13 @@
 ## Structural functions
 Optional, may be defined in user code and will be triggered at different points
 
-| Structural function | Usage | 
+| Structural function | Usage |
 | --- | --- |
-| `function keyPressed(k) { }` | Fired initially then sustained as a key is held. k contains the keycode of the key pressed and can be compared against the key object. |
-| `function init() { }` | Run once when the page loads. |
-| `function main() { }` | Run continually as the page runs. |
+| `function keyPressed(k){}` | Fired initially then sustained as a key is held. k contains the keycode of the key pressed and can be compared against the key object. |
+| `function init(){}` | Run once when the page loads. |
+| `function main(){}` | Run continually as the page runs. |
+| `function mouseOn()` | Run once as the mouse enters the canvas. |
+| `function mouseOff()` | Run once as the mouse exits the canvas. |
 
 ## Reference objects
 
@@ -19,6 +21,7 @@ Optional, may be defined in user code and will be triggered at different points
 | `left` | `true` if the mouse's left button is pressed, `false` if it is not. |
 | `mid` | `true` if the mouse's middle button is pressed, `false` if it is not. |
 | `right` | `true` if the mouse's right button is pressed, `false` if it is not. |
+| `in` | `true` if the mouse is within the canvas, `false` if it is outside. |
 
 | `key` object | Usage |
 | --- | --- |

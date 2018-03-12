@@ -3,7 +3,8 @@ var mouse = {
 		y: 0,
 		left: false,
 		mid: false,
-		right: false
+		right: false,
+		in: false
 };
 
 /*
@@ -45,6 +46,10 @@ window.onload = function() {
 	}
 
 	canvas.onmouseenter = function mouseEnter(event) {
+		mouse.in = true;
+		if (typeof(mouseOn) == "function") {
+			mouseOn();
+		}
 		switch (event.buttons) {
 			case 0:
 				mouse.left = false;
@@ -93,6 +98,10 @@ window.onload = function() {
 		mouse.left = false;
 		mouse.mid = false;
 		mouse.right = false;
+		mouse.in = false;
+		if (typeof(mouseOff) == "function") {
+			mouseOff();
+		}
 	}
 
 }

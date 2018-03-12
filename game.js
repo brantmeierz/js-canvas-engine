@@ -12,6 +12,18 @@ var state = 0;
 
 //}
 
+var n = 100;
+
+function mouseOn() {
+	n = 200;
+}
+
+function mouseOff() {
+	n = 0;
+}
+
+var speed = 7;
+
 function main() {
 	if (keyDown.up) {
 		console.log("UP");
@@ -35,20 +47,20 @@ function main() {
 		console.log("MOUSER");
 	}
 	//console.log(mouse.x + " " + mouse.y);
-	background(50, 50, 50);
+	background(n,n,n);
 	fstyle(255, 0, 0);
 	if (state == 0) {
-		x++;
-		y++;
+		x+=speed;
+		y+=speed;
 	} else if (state == 1) {
-		x++;
-		y--;
+		x+=speed;
+		y-=speed;
 	} else if (state == 2) {
-		x--;
-		y--;
+		x-=speed;
+		y-=speed;
 	} else if (state == 3) {
-		x--;
-		y++;
+		x-=speed;
+		y+=speed;
 	}
 	if (y + h > canvasHeight) {
 		if (state == 0) {
